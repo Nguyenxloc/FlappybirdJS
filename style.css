@@ -1,0 +1,55 @@
+#container{
+    position: relative;
+    max-width: 500px;
+    margin: auto;
+    border: 1px solid black;
+    height: 700px;
+}
+
+#bird img{
+    position:  absolute;
+    top: 220px;
+    left: 25px;
+    height: 50px;
+    width: 70px;
+    
+}
+
+#pipe img{
+    position: absolute;
+    bottom: 0px;
+    right: -10px;
+    width: 100px;
+    height: 400px;
+    
+}
+#piperotate img{
+    position: absolute;
+    top:20px;
+    right: -10px;
+    width: 100px;
+    height: 300px;
+    transform: rotate(180deg);
+}
+
+#background img{
+    
+    width: 500px;
+    height: 680px;
+}
+#stt{
+     position: absolute;
+     top: 50px;
+     left: 170px;
+}
+#score{
+     position: absolute;
+     top: 100px;
+     left: 240px;
+}
+#upbutton{
+    width: 250px;;
+}
+#start{
+    width: 245px;
+}
