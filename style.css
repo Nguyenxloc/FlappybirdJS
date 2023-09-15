@@ -4,7 +4,18 @@
     margin: auto;
     border: 1px solid black;
     height: 700px;
+    overflow:hidden;
 }
+
+
+#line-div{
+    width: 250px;
+    height: 10px;
+    position: absolute;
+    border-bottom: 3px solid red;
+    right: 300px; 
+    top: 150px;
+   }
 
 #bird img {
     position: absolute;
@@ -12,29 +23,61 @@
     left: 25px;
     height: 50px;
     width: 70px;
-
 }
 
-#pipe img {
+#pipe1 img {
     position: absolute;
     bottom: 0px;
-    right: -10px;
+    right: -150px;
     width: 100px;
     height: 400px;
-
 }
 
-#piperotate img {
+#piperotate1 img {
     position: absolute;
     top: 20px;
-    right: -10px;
+    right: -150px;
     width: 100px;
     height: 300px;
     transform: rotate(180deg);
 }
 
-#background img {
+#pipe2 img {
+    position: absolute;
+    bottom: 0px;
+    right: -350px;
+    width: 100px;
+    height: 400px;
+}
 
+#piperotate2 img {
+    position: absolute;
+    top: 20px;
+    right: -350px;
+    width: 100px;
+    height: 300px;
+    transform: rotate(180deg);
+}
+
+#pipe3 img {
+    position: absolute;
+    bottom: 0px;
+    right: -550px;
+    width: 100px;
+    height: 400px;
+}
+
+#piperotate3 img {
+    position: absolute;
+    top: 20px;
+    right: -550px;
+    width: 100px;
+    height: 300px;
+    transform: rotate(180deg);
+}
+
+
+#background img {
     width: 500px;
     height: 680px;
 }
