@@ -23,7 +23,7 @@ function downer() {
     posY = posY + vb;
     let py = posY.toString() + "px";
     bird.style.top = py;
-    if (posY > 640) {
+    if (posY > 660) {
         posY = 0;
     }
 }
@@ -34,6 +34,7 @@ function begin() {
     vb = 2;
     vp = 1;
     winOrLose = 1;
+    countCircle=0;
     posXofPipe1 = -20;
     posXofPipe2 = -350;
     posY = 220;
@@ -65,9 +66,11 @@ function pipe1Move() {
         //corrosive effect
         //run()
         //start again
-        posXofPipe1 = -80;
         randomHOfPipe1();
-        
+        posXofPipe1 = -80;
+    }
+    if(posXofPipe1==410){
+        countCircle++;
     }
 }
 
@@ -89,7 +92,10 @@ function pipe2Move() {
         //run()
         //start again
         randomHOfPipe2();
-        posXofPipe2 = -20;
+        posXofPipe2 = -80;
+    }
+    if(posXofPipe2==410){
+        countCircle++;
     }
 }
 
@@ -120,26 +126,35 @@ function randomNum(min, max) {
 function checkH(h, hRotate) {
     if (h == hRotate) {
         h = "300px";
-        hRotate = "180px";
+        hRotate = 680 - h - 200;
     }
-    if (hRotate < 0) {
+    if (hRotate < 10) {
         hRotate = "180px";
+        h = 680-200-hRotate;
     }
-    if (h < 0) {
+    if (h < 10) {
         h = "180px";
+        hRotate = 680 - h - 200;
     }
+
+}
+function checkRandomAgain(){
     if (ranHOfPipe1 > 500) {
         ranHOfPipe1 = randomNum(100, 600);
+        ranHOfPipeRotate1 = 680 - ranHOfPipe1 - 200;
     }
     if (ranHOfPipe1 < 20) {
         ranHOfPipe1 = randomNum(100, 600);
+        ranHOfPipeRotate1 = 680 - ranHOfPipe1 - 200;
     }
-    // if (ranHOfPipeRotate1 > 500) {
-    //     ranHOfPipeRotate1 = randomNum(100, 600);
-    // }
-    // if (ranHOfPipeRotate1 < 20) {
-    //     ranHOfPipeRotate1 = randomNum(100, 600);
-    // }
+    if (ranHOfPipeRotate1 > 500) {
+        ranHOfPipeRotate1 = randomNum(100, 600);
+        ranHOfPipe1 = 680-200-ranHOfPipeRotate1;
+    }
+    if (ranHOfPipeRotate1 < 20) {
+        ranHOfPipeRotate1 = randomNum(100, 600);
+        ranHOfPipe1 = 680-200-ranHOfPipeRotate1;
+    }
 }
 
 function randomHOfPipe1() {
@@ -147,9 +162,10 @@ function randomHOfPipe1() {
     var pipeRotate1 = document.querySelector("#pipe1imgrotate");
     ranHOfPipe1 = ranHOfPipe1 + randomNum(-100, 100);
     ranHOfPipeRotate1 = 680 - ranHOfPipe1 - 200;
+    checkRandomAgain();
+    checkH(ranHOfPipe1, ranHOfPipeRotate1);
     let hPipe1 = ranHOfPipe1.toString() + "px";
     let hPipeRotate1 = ranHOfPipeRotate1.toString() + "px";
-    checkH(hPipe1, hPipeRotate1);
     pipe1.style.height = hPipe1;
     pipeRotate1.style.height = hPipeRotate1;
     // pipe3.style.height = hPipe3;
@@ -160,9 +176,10 @@ function randomHOfPipe2(){
     var pipeRotate2 = document.querySelector("#pipe2imgrotate");
     ranHOfPipe2 = ranHOfPipe2 + randomNum(-100, 100);
     ranHOfPipeRotate2 = 680 - ranHOfPipe2 - 200;
+    checkRandomAgain();
+    checkH(ranHOfPipe2, ranHOfPipeRotate2);
     let hPipe2 = ranHOfPipe2.toString() + "px";
     let hPipeRotate2 = ranHOfPipeRotate2.toString() + "px";
-    checkH(hPipe2, hPipeRotate2);
     pipe2.style.height = hPipe2;
     pipeRotate2.style.height = hPipeRotate2;
 }
@@ -205,7 +222,7 @@ function logicGame() {
         vp = 0;
         stt.innerHTML = "GAME OVER";
     }
-    if (posY > 600) {
+    if (posY > 650) {
         // console.log("game over");
         vb = 0;
         vp = 0;
@@ -240,7 +257,7 @@ function logicGame() {
         vp = 0;
         stt.innerHTML = "GAME OVER";
     }
-    if (posY > 600) {
+    if (posY > 650) {
         // console.log("game over");
         vb = 0;
         vp = 0;
@@ -295,7 +312,7 @@ function logicGameOver() {
         stt.innerHTML = "GAME OVER";
         console.log("case hit to floor pipe1");
     }
-    if (posY > 600) {
+    if (posY > 650) {
         // console.log("game over");
         vb = 0;
         vp = 0;
@@ -338,7 +355,7 @@ function logicGameOver() {
         stt.innerHTML = "GAME OVER";
         console.log("case hit to floor pipe2");
     }
-    if (posY > 600) {
+    if (posY > 650) {
         // console.log("game over");
         vb = 0;
         vp = 0;
@@ -356,22 +373,26 @@ function logicGameScore() {
     var pipeRotate2 = document.querySelector("#pipe2imgrotate");
     var pipe3 = document.querySelector("#pipeimg");
     var pipeRotate3 = document.querySelector("#pipe2imgrotate");
-    // score++
-    if (posY > pipeRotate1.height && posY < (pipeRotate1.height + 200) && posXofPipe1 >= 310 && posXofPipe1 <= 320 && vb > 0) {
-        sc++;
-        score.innerHTML = sc;
+    // score++ old school throw it out
+    // if (posY > pipeRotate1.height && posY < (pipeRotate1.height + 200) && posXofPipe1 >= 310 && posXofPipe1 <= 320 && vb > 0) {
+    //     sc++;
+    //     score.innerHTML = sc;
+    // }
+    // // score++
+    // if (posY > pipeRotate2.height && posY < (pipeRotate2.height + 200) && posXofPipe2 >= 310 && posXofPipe2 <= 320 && vb > 0) {
+    //     sc++;
+    //     score.innerHTML = sc;
+    // }
+
+    if(winOrLose ==1){
+        score.innerHTML = countCircle;
     }
-    // score++
-    if (posY > pipeRotate2.height && posY < (pipeRotate2.height + 200) && posXofPipe2 >= 310 && posXofPipe2 <= 320 && vb > 0) {
-        sc++;
-        score.innerHTML = sc;
-    }
+
 }
 
 const bird = setInterval(downer, 10);
 const pipe1 = setInterval(pipe1Move, 10);
 const pipe2 = setInterval(pipe2Move, 10);
 // const pipe3 = setInterval(pipe3Move, 100);
-const logic = setInterval(logicGameOver, 50);
-const logic1 = setInterval(logicGameScore, 100);
-setInterval(relatedfunc, 50);
+// const logic = setInterval(logicGameOver, 50);
+const logic1 = setInterval(logicGameScore, 50);
