@@ -123,47 +123,74 @@ function randomNum(min, max) {
     return Math.round((Math.random() * (max - min) + min));
 }
 
-function checkH(h, hRotate) {
-    if (h == hRotate) {
-        h = "300px";
-        hRotate = 680 - h - 200;
-    }
-    if (hRotate < 10) {
-        hRotate = "180px";
-        h = 680-200-hRotate;
-    }
-    if (h < 10) {
-        h = "180px";
-        hRotate = 680 - h - 200;
-    }
 
-}
-function checkRandomAgain(){
-    if (ranHOfPipe1 > 500) {
+function checkRandomPipe1Again(){
+    if (ranHOfPipe1 == ranHOfPipeRotate1) {
         ranHOfPipe1 = randomNum(100, 600);
         ranHOfPipeRotate1 = 680 - ranHOfPipe1 - 200;
-    }
-    if (ranHOfPipe1 < 20) {
-        ranHOfPipe1 = randomNum(100, 600);
-        ranHOfPipeRotate1 = 680 - ranHOfPipe1 - 200;
-    }
-    if (ranHOfPipeRotate1 > 500) {
-        ranHOfPipeRotate1 = randomNum(100, 600);
-        ranHOfPipe1 = 680-200-ranHOfPipeRotate1;
+        return
     }
     if (ranHOfPipeRotate1 < 20) {
         ranHOfPipeRotate1 = randomNum(100, 600);
         ranHOfPipe1 = 680-200-ranHOfPipeRotate1;
+        return
     }
+    if (ranHOfPipe1 < 20) {
+        ranHOfPipe1 = randomNum(100, 600);
+        ranHOfPipeRotate1 = 680 - ranHOfPipe1 - 200;
+        return
+    }
+    if (ranHOfPipe1 > 500) {
+        ranHOfPipe1 = randomNum(100, 600);
+        ranHOfPipeRotate1 = 680 - ranHOfPipe1 - 200;
+        return
+    }
+    if (ranHOfPipeRotate1 > 500) {
+        ranHOfPipeRotate1 = randomNum(100, 600);
+        ranHOfPipe1 = 680-200-ranHOfPipeRotate1;
+        return
+    }
+    
+    
+    
 }
+
+function checkRandomPipe2Again(){
+    if (ranHOfPipe2 == ranHOfPipeRotate2) {
+        ranHOfPipe2 = randomNum(100, 600);
+        ranHOfPipeRotate2 = 680 - ranHOfPipe2 - 200;
+        return
+    }
+    if (ranHOfPipeRotate2 < 20) {
+        ranHOfPipeRotate2 = randomNum(100, 600);
+        ranHOfPipe2 = 680-200-ranHOfPipeRotate2;
+        return
+    }
+    if (ranHOfPipe2 < 20) {
+        ranHOfPipe2 = randomNum(100, 600);
+        ranHOfPipeRotate2 = 680 - ranHOfPipe2 - 200;
+        return
+    }
+    if (ranHOfPipe2 > 500) {
+        ranHOfPipe2 = randomNum(100, 600);
+        ranHOfPipeRotate2 = 680 - ranHOfPipe2 - 200;
+        return
+    }
+    if (ranHOfPipeRotate2 > 500) {
+        ranHOfPipeRotate2 = randomNum(100, 600);
+        ranHOfPipe2 = 680-200-ranHOfPipeRotate2;
+        return
+    }
+    
+}
+
 
 function randomHOfPipe1() {
     var pipe1 = document.querySelector("#pipe1img");
     var pipeRotate1 = document.querySelector("#pipe1imgrotate");
     ranHOfPipe1 = ranHOfPipe1 + randomNum(-100, 100);
     ranHOfPipeRotate1 = 680 - ranHOfPipe1 - 200;
-    checkRandomAgain();
-    checkH(ranHOfPipe1, ranHOfPipeRotate1);
+    checkRandomPipe1Again();
     let hPipe1 = ranHOfPipe1.toString() + "px";
     let hPipeRotate1 = ranHOfPipeRotate1.toString() + "px";
     pipe1.style.height = hPipe1;
@@ -176,8 +203,7 @@ function randomHOfPipe2(){
     var pipeRotate2 = document.querySelector("#pipe2imgrotate");
     ranHOfPipe2 = ranHOfPipe2 + randomNum(-100, 100);
     ranHOfPipeRotate2 = 680 - ranHOfPipe2 - 200;
-    checkRandomAgain();
-    checkH(ranHOfPipe2, ranHOfPipeRotate2);
+    checkRandomPipe2Again();
     let hPipe2 = ranHOfPipe2.toString() + "px";
     let hPipeRotate2 = ranHOfPipeRotate2.toString() + "px";
     pipe2.style.height = hPipe2;
