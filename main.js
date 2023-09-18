@@ -1,4 +1,6 @@
 let posY = 220;
+let posXofBase1 = -250;
+let posXofBase2 = 250;
 let posXofPipe1 = -20;
 let posXofPipe2 = -350;
 let posXofPipe3 = -150;
@@ -37,6 +39,8 @@ function begin() {
     countCircle=0;
     posXofPipe1 = -20;
     posXofPipe2 = -350;
+    posXofBase1 = -250;
+    posXofBase2 = 250;
     posY = 220;
     stt.innerHTML = "";
     sc = 0;
@@ -73,7 +77,6 @@ function pipe1Move() {
         countCircle++;
     }
 }
-
 
 
 
@@ -207,6 +210,24 @@ function randomHOfPipe2(){
     pipeRotate2.style.height = hPipeRotate2;
 }
 
+function moveBase(){
+    var base1 = document.querySelector("#base1img");
+    var base2 = document.querySelector("#base2img");
+    posXofBase1 = posXofBase1 + vp;
+    posXofBase2 = posXofBase2 +vp;
+    let baseX1 = posXofBase1.toString() + "px";
+    let baseX2 = posXofBase2.toString() +"px";
+    base1.style.right = baseX1;
+    base2.style.right = baseX2;
+    if (posXofBase1 >= 500) {
+        posXofBase1 = -500;
+    }
+    if(posXofBase2 >=500){
+        posXofBase2 = -500;
+    }
+    console.log("move base");
+}
+
 function relatedfunc() {
     if (posXofPipe1 >= (-1) && posXofPipe1 <= 0) {
         randomHOfPipe1();
@@ -241,14 +262,14 @@ function logicGameOver() {
         console.log("case hit to above pipe1 edge");
     }
     //hit to the floor or ceil
-    if (posY >= (pipeRotate1.height+10) && posY <= (pipeRotate1.height + 15) && posXofPipe1 >= 310 && posXofPipe1 <= 480) {
+    if (posY >= (pipeRotate1.height+10) && posY <= (pipeRotate1.height + 15) && posXofPipe1 >= 310 && posXofPipe1 <= 450) {
         vb = 0;
         vp = 0;
         winOrLose = 0;
         stt.innerHTML = "GAME OVER";
         console.log("case hit to ceil pipe1");
     }
-    if (posY >= (pipeRotate1.height + 180) && posY <= (pipeRotate1.height + 250) && posXofPipe1 >= 310 && posXofPipe1 <= 480) {
+    if (posY >= (pipeRotate1.height + 180) && posY <= (pipeRotate1.height + 250) && posXofPipe1 >= 310 && posXofPipe1 <= 450) {
         vb = 0;
         vp = 0;
         winOrLose = 0;
@@ -284,14 +305,14 @@ function logicGameOver() {
         console.log("case hit to above pipe2 edge");
     }
     //hit to the floor or ceil
-    if (posY >= (pipeRotate2.height+10) && posY <= (pipeRotate2.height + 15) && posXofPipe2 >= 310 && posXofPipe2 <= 480) {
+    if (posY >= (pipeRotate2.height+10) && posY <= (pipeRotate2.height + 15) && posXofPipe2 >= 310 && posXofPipe2 <= 450) {
         vb = 0;
         vp = 0;
         winOrLose = 0;
         stt.innerHTML = "GAME OVER";
         console.log("case hit to ceil pipe2");
     }
-    if (posY >= (pipeRotate2.height + 180) && posY <= (pipeRotate2.height + 250) && posXofPipe2 >= 310 && posXofPipe2 <= 480) {
+    if (posY >= (pipeRotate2.height + 180) && posY <= (pipeRotate2.height + 250) && posXofPipe2 >= 310 && posXofPipe2 <= 450) {
         vb = 0;
         vp = 0;
         winOrLose = 0;
@@ -316,17 +337,6 @@ function logicGameScore() {
     var pipeRotate2 = document.querySelector("#pipe2imgrotate");
     var pipe3 = document.querySelector("#pipeimg");
     var pipeRotate3 = document.querySelector("#pipe2imgrotate");
-    // score++ old school throw it out
-    // if (posY > pipeRotate1.height && posY < (pipeRotate1.height + 200) && posXofPipe1 >= 310 && posXofPipe1 <= 320 && vb > 0) {
-    //     sc++;
-    //     score.innerHTML = sc;
-    // }
-    // // score++
-    // if (posY > pipeRotate2.height && posY < (pipeRotate2.height + 200) && posXofPipe2 >= 310 && posXofPipe2 <= 320 && vb > 0) {
-    //     sc++;
-    //     score.innerHTML = sc;
-    // }
-
     if(winOrLose ==1){
         score.innerHTML = countCircle;
     }
@@ -335,6 +345,7 @@ function logicGameScore() {
 const bird = setInterval(downer, 10);
 const pipe1 = setInterval(pipe1Move, 10);
 const pipe2 = setInterval(pipe2Move, 10);
+const base = setInterval(moveBase,10);
 // const pipe3 = setInterval(pipe3Move, 100);
 const logic = setInterval(logicGameOver, 10);
 const logic1 = setInterval(logicGameScore, 50);

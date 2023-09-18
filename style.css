@@ -82,9 +82,16 @@
     height: 680px;
 }
 
-#base img {
+#base1 img {
     position:absolute;
     top: 645px;
+    right:-250px;
+    width: 500px;
+    height: 180px;
+}#base2 img {
+    position:absolute;
+    top: 645px;
+    right:250px;
     width: 500px;
     height: 180px;
 }
