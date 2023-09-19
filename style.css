@@ -27,28 +27,10 @@
 
 #bird1img {
     position: absolute;
-    top: 220px;
+    top: 360px;
     left: 25px;
     height: 40px;
     width: 60px;
-}
-
-#bird2img {
-    position: absolute;
-    top: 220px;
-    left: 25px;
-    height: 40px;
-    width: 60px;
-    display: none;
-}
-
-#bird3img {
-    position: absolute;
-    top: 220px;
-    left: 25px;
-    height: 40px;
-    width: 60px;
-    display: none;
 }
 
 #pipe1 img {
@@ -61,7 +43,7 @@
 
 #piperotate1 img {
     position: absolute;
-    top: 20px;
+    top: 0px;
     right: -150px;
     width: 100px;
     height: 300px;
@@ -78,7 +60,7 @@
 
 #piperotate2 img {
     position: absolute;
-    top: 20px;
+    top: 0px;
     right: -350px;
     width: 100px;
     height: 300px;
@@ -91,15 +73,6 @@
     right: -550px;
     width: 100px;
     height: 400px;
-}
-
-#piperotate3 img {
-    position: absolute;
-    top: 20px;
-    right: -550px;
-    width: 100px;
-    height: 300px;
-    transform: rotate(180deg);
 }
 
 
@@ -145,7 +118,8 @@
 }
 #stt {
     position: absolute;
-    color: brown;
+    color: darkred;
+    font-weight: bolder;
 }
 
 #score {
@@ -153,4 +127,10 @@
     font-size: 100px;
     top: 40px;
     color: bisque;
+}
+
+#startgame{
+    position: absolute;
+    top:  250px;
+    left: 160px;
 }
