@@ -4,25 +4,51 @@
     margin: auto;
     border: 1px solid black;
     height: 700px;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 
-#line-div{
+#line-div {
     width: 250px;
     height: 10px;
     position: absolute;
     border-bottom: 3px solid red;
-    right: 300px; 
+    right: 300px;
     top: 150px;
-   }
+}
 
-#bird img {
+#stt {
+    position: absolute;
+}
+
+#score {
+    position: absolute;
+}
+
+#bird1img {
     position: absolute;
     top: 220px;
     left: 25px;
-    height: 50px;
-    width: 70px;
+    height: 40px;
+    width: 60px;
+}
+
+#bird2img {
+    position: absolute;
+    top: 220px;
+    left: 25px;
+    height: 40px;
+    width: 60px;
+    display: none;
+}
+
+#bird3img {
+    position: absolute;
+    top: 220px;
+    left: 25px;
+    height: 40px;
+    width: 60px;
+    display: none;
 }
 
 #pipe1 img {
@@ -83,15 +109,17 @@
 }
 
 #base1 img {
-    position:absolute;
+    position: absolute;
     top: 645px;
-    right:-250px;
+    right: -250px;
     width: 500px;
     height: 180px;
-}#base2 img {
-    position:absolute;
+}
+
+#base2 img {
+    position: absolute;
     top: 645px;
-    right:250px;
+    right: 250px;
     width: 500px;
     height: 180px;
 }
@@ -114,4 +142,15 @@
 
 #start {
     width: 245px;
+}
+#stt {
+    position: absolute;
+    color: brown;
+}
+
+#score {
+    position: absolute;
+    font-size: 100px;
+    top: 40px;
+    color: bisque;
 }
