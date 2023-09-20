@@ -10,7 +10,7 @@ let ranHOfPipe2 = 350;
 let ranHOfPipeRotate2 = 350;
 let ranHOfPipe3 = 350;
 let ranHOfPipeRotate3 = 350;
-let vb = 2;
+let vb = 3;
 let vp = 1;
 let sc = 0;
 let winOrLose = 1;// 0 lose 1 win
@@ -28,9 +28,10 @@ var stt = document.querySelector("#stt");
 var score = document.querySelector("#score");
 var birdPlayer = document.querySelector("#bird1img");
 var startIcon = document.querySelector("#startgame");
+var gameoverIMG = document.querySelector("#gameover");
 var audioPoint = new Audio('audio/point.ogg');
 var audioHit = new Audio('audio/hit.ogg');
-var audioWing  =  new Audio('audio/wing.ogg');
+var audioWing = new Audio('audio/wing.ogg');
 var audioSwoosh = new Audio('audio/swoosh.ogg');
 var audioDie = new Audio('audio/die.ogg');
 
@@ -65,7 +66,7 @@ function begin() {
     logic1 = setInterval(logicGameScore, 50);
     randomHOfPipe1();
     randomHOfPipe2();
-    vb = 2;
+    vb = 3;
     vp = 1;
     winOrLose = 1;
     countCircle = 0;
@@ -74,7 +75,6 @@ function begin() {
     posXofBase1 = -250;
     posXofBase2 = 250;
     posY = 220;
-    stt.innerHTML = "";
     sc = 0;
     score.innerHTML = "";
 }
@@ -84,13 +84,13 @@ function upper() {
         begin();
         sttStartGame = 1;
         startIcon.style.visibility = "hidden";
+        gameoverIMG.style.visibility = "hidden";
     }
     if (winOrLose == 1) {
         audioWing.play();
-        var bird1 = document.querySelector("#bird1img");
-        posY = posY - 120;
+        posY = posY - 125;
         let py = posY.toString() + "px";
-        bird1.style.top = py;
+        birdPlayer.style.top = py;
         if (posY < 20) {
             posY = 220;
         }
@@ -182,7 +182,7 @@ function randomHOfPipe1() {
 function randomHOfPipe2() {
     var pipe2 = document.querySelector("#pipe2img");
     var pipeRotate2 = document.querySelector("#pipe2imgrotate");
-    ranHOfPipe2 = randomNum(20, 300);
+    ranHOfPipe2 = randomNum(100, 300);
     ranHOfPipeRotate2 = 680 - ranHOfPipe2 - 250;
     let hPipe2 = ranHOfPipe2.toString() + "px";
     let hPipeRotate2 = ranHOfPipeRotate2.toString() + "px";
@@ -230,10 +230,10 @@ function logicGameOver() {
         vp = 0;
         winOrLose = 0;
         sttStartGame = 0;
-        stt.innerHTML = "GAME OVER";
         console.log("case hit to below pipe1 edge");
         clearRam();
         audioHit.play();
+        gameoverIMG.style.visibility = "visible";
         startIcon.style.visibility = "visible";
     }
     if (posY < pipeRotate1.height && posXofPipe1 >= 315 && posXofPipe1 <= 320) {
@@ -242,10 +242,10 @@ function logicGameOver() {
         vp = 0;
         winOrLose = 0;
         sttStartGame = 0;
-        stt.innerHTML = "GAME OVER";
         console.log("case hit to above pipe1 edge");
         clearRam();
         audioHit.play();
+        gameoverIMG.style.visibility = "visible";
         startIcon.style.visibility = "visible";
     }
     //hit to the floor or ceil
@@ -254,33 +254,33 @@ function logicGameOver() {
         vp = 0;
         winOrLose = 0;
         sttStartGame = 0;
-        stt.innerHTML = "GAME OVER";
         console.log("case hit to ceil pipe1");
         clearRam();
         audioHit.play();
+        gameoverIMG.style.visibility = "visible";
         startIcon.style.visibility = "visible";
     }
-    if (posY >= (pipeRotate1.height + 180) && posY <= (pipeRotate1.height + 250) && posXofPipe1 >= 310 && posXofPipe1 <= 450) {
+    if (posY >= (pipeRotate1.height + 180) && posY <= (pipeRotate1.height + 250) && posXofPipe1 >= 310 && posXofPipe1 <= 460) {
         vb = 0;
         vp = 0;
         winOrLose = 0;
         sttStartGame = 0;
-        stt.innerHTML = "GAME OVER";
         console.log("case hit to floor pipe1");
         clearRam();
         audioHit.play();
+        gameoverIMG.style.visibility = "visible";
         startIcon.style.visibility = "visible";
     }
-    if (posY > 600) {
+    if (posY > 605) {
         // console.log("game over");
         vb = 0;
         vp = 0;
         winOrLose = 0;
         sttStartGame = 0;
-        stt.innerHTML = "GAME OVER";
         console.log("case hit to ground A");
         clearRam();
         audioHit.play();
+        gameoverIMG.style.visibility = "visible";
         startIcon.style.visibility = "visible";
     }
 
@@ -293,10 +293,10 @@ function logicGameOver() {
         vp = 0;
         winOrLose = 0;
         sttStartGame = 0;
-        stt.innerHTML = "GAME OVER";
         console.log("case hit to below pipe2 edge");
         clearRam();
         audioHit.play();
+        gameoverIMG.style.visibility = "visible";
         startIcon.style.visibility = "visible";
     }
     if (posY < pipeRotate2.height && posXofPipe2 >= 315 && posXofPipe2 <= 320) {
@@ -305,10 +305,10 @@ function logicGameOver() {
         vp = 0;
         winOrLose = 0;
         sttStartGame = 0;
-        stt.innerHTML = "GAME OVER";
         console.log("case hit to above pipe2 edge");
         clearRam();
         audioHit.play();
+        gameoverIMG.style.visibility = "visible";
         startIcon.style.visibility = "visible";
     }
     //hit to the floor or ceil
@@ -317,33 +317,33 @@ function logicGameOver() {
         vp = 0;
         winOrLose = 0;
         sttStartGame = 0;
-        stt.innerHTML = "GAME OVER";
         console.log("case hit to ceil pipe2");
         clearRam();
         audioHit.play();
+        gameoverIMG.style.visibility = "visible";
         startIcon.style.visibility = "visible";
     }
-    if (posY >= (pipeRotate2.height + 180) && posY <= (pipeRotate2.height + 250) && posXofPipe2 >= 310 && posXofPipe2 <= 450) {
+    if (posY >= (pipeRotate2.height + 180) && posY <= (pipeRotate2.height + 250) && posXofPipe2 >= 310 && posXofPipe2 <= 460) {
         vb = 0;
         vp = 0;
         winOrLose = 0;
         sttStartGame = 0;
-        stt.innerHTML = "GAME OVER";
         console.log("case hit to floor pipe2");
         clearRam();
         audioHit.play();
+        gameoverIMG.style.visibility = "visible";
         startIcon.style.visibility = "visible";
     }
-    if (posY > 600) {
+    if (posY > 605) {
         // console.log("game over");
         vb = 0;
         vp = 0;
         winOrLose = 0;
         sttStartGame = 0;
-        stt.innerHTML = "GAME OVER";
         console.log("case hit to ground B");
         clearRam();
         audioHit.play();
+        gameoverIMG.style.visibility = "visible";
         startIcon.style.visibility = "visible";
     }
 }
